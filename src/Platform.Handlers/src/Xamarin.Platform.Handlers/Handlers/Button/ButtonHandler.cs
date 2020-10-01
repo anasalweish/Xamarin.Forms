@@ -1,33 +1,21 @@
-﻿using System;
-using Xamarin.Forms;
-
-#if __IOS__
-using NativeView = UIKit.UIButton;
-#elif __MACOS__
-using NativeView = AppKit.NSButton;
-#elif MONOANDROID
-using NativeView = AndroidX.AppCompat.Widget.AppCompatButton;
-#elif NETCOREAPP
-using NativeView = System.Windows.Controls.Button;
-#elif NETSTANDARD
-using NativeView = System.Object;
-#endif
-
-namespace Xamarin.Platform.Handlers
+﻿namespace Xamarin.Platform.Handlers
 {
-	public class ButtonHandler : AbstractViewHandler<IButton, NativeView>
+	public partial class ButtonHandler 
 	{
 		public static PropertyMapper<IButton, ButtonHandler> ButtonMapper = new PropertyMapper<IButton, ButtonHandler>(ViewHandler.ViewMapper)
 		{
-			[nameof(IButton.Text)] = MapText,
-			[nameof(IButton.Color)] = MapColor
+			[nameof(IText.Text)] = MapText,
+			[nameof(IText.Color)] = MapColor,
+			[nameof(IText.Font)] = MapFont,
+			[nameof(IText.CharacterSpacing)] = MapCharacterSpacing,
+			[nameof(IBorder.CornerRadius)] = MapCornerRadius,
+			[nameof(IBorder.BorderColor)] = MapBorderColor,
+			[nameof(IBorder.BorderWidth)] = MapBorderWidth,
+			[nameof(IFont.FontSize)] = MapFont,
+			[nameof(IFont.FontAttributes)] = MapFont,
+			[nameof(IButton.ContentLayout)] = MapContentLayout,
+			[nameof(IPadding.Padding)] = MapPadding
 		};
-
-		public static void MapColor(ButtonHandler handler, IButton button)
-		{
-			ViewHandler.CheckParameters(handler, button);
-			handler.TypedNativeView?.UpdateColor(button);
-		}
 
 		public static void MapText(ButtonHandler handler, IButton button)
 		{
@@ -35,11 +23,53 @@ namespace Xamarin.Platform.Handlers
 			handler.TypedNativeView?.UpdateText(button);
 		}
 
-#if MONOANDROID
-		protected override NativeView CreateView() => new NativeView(this.Context);
-#else
-		protected override NativeView CreateView() => new NativeView();
-#endif
+		public static void MapColor(ButtonHandler handler, IButton button)
+		{
+			ViewHandler.CheckParameters(handler, button);
+			handler.TypedNativeView?.UpdateColor(button);
+		}
+
+		public static void MapFont(ButtonHandler handler, IButton button)
+		{
+			ViewHandler.CheckParameters(handler, button);
+			handler.TypedNativeView?.UpdateFont(button);
+		}
+
+		public static void MapCharacterSpacing(ButtonHandler handler, IButton button)
+		{
+			ViewHandler.CheckParameters(handler, button);
+			handler.TypedNativeView?.UpdateCharacterSpacing(button);
+		}
+
+		public static void MapCornerRadius(ButtonHandler handler, IButton button)
+		{
+			ViewHandler.CheckParameters(handler, button);
+			handler.TypedNativeView?.UpdateCornerRadius(button);
+		}
+
+		public static void MapBorderColor(ButtonHandler handler, IButton button)
+		{
+			ViewHandler.CheckParameters(handler, button);
+			handler.TypedNativeView?.UpdateBorderColor(button);
+		}
+
+		public static void MapBorderWidth(ButtonHandler handler, IButton button)
+		{
+			ViewHandler.CheckParameters(handler, button);
+			handler.TypedNativeView?.UpdateBorderWidth(button);
+		}
+
+		public static void MapContentLayout(ButtonHandler handler, IButton button)
+		{
+			ViewHandler.CheckParameters(handler, button);
+			handler.TypedNativeView?.UpdateContentLayout(button);
+		}
+
+		public static void MapPadding(ButtonHandler handler, IButton button)
+		{
+			ViewHandler.CheckParameters(handler, button);
+			handler.TypedNativeView?.UpdatePadding(button);
+		}
 
 		public ButtonHandler() : base(ButtonMapper)
 		{

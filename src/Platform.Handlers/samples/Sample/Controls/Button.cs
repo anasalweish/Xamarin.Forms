@@ -34,6 +34,10 @@ namespace Sample
 
 		public double CharacterSpacing { get; set; }
 
+		public ButtonContentLayout ContentLayout { get; set; }
+
+		public Thickness Padding { get; set; }
+
 		public Action Pressed { get; set; }
 		public Action Released { get; set; }
 		public Action Clicked { get; set; }
