@@ -159,6 +159,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			Control.Enabled = Element.IsEnabled;
 		}
 
+		[PortHandler]
 		void UpdateFont()
 		{
 			Button button = Element;
@@ -190,6 +191,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			_textColorSwitcher?.UpdateTextColor(Control, Element.TextColor);
 		}
 
+		[PortHandler]
 		void UpdateCharacterSpacing()
 		{
 			if (Forms.IsLollipopOrNewer)

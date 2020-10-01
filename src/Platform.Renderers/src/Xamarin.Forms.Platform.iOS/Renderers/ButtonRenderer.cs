@@ -10,6 +10,7 @@ using Specifics = Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using SizeF = CoreGraphics.CGSize;
 using PreserveAttribute = Foundation.PreserveAttribute;
 using CoreGraphics;
+using Xamarin.Platform;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -200,6 +201,7 @@ namespace Xamarin.Forms.Platform.iOS
 			ButtonElementManager.OnButtonTouchDown(this.Element);
 		}
 
+		[PortHandler]
 		void UpdateFont()
 		{
 			Control.TitleLabel.Font = Element.ToUIFont();
