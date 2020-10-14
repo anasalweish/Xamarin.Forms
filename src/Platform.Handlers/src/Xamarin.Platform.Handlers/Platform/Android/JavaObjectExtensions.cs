@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace Xamarin.Forms.Platform.Android
+namespace Xamarin.Platform
 {
 	internal static class JavaObjectExtensions
 	{

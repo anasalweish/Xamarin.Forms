@@ -316,6 +316,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 			Tag = this;
 		}
 
+		[PortHandler]
 		void UpdateFont()
 		{
 			if (Element == null || _isDisposed)
@@ -368,6 +369,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 			_textColorSwitcher.Value.UpdateTextColor(this, Button.TextColor);
 		}
 
+		[PortHandler]
 		void UpdateCharacterSpacing()
 		{
 			if (Forms.IsLollipopOrNewer)
